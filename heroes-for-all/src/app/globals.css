@@ -1,0 +1,283 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   Heroes For All — Design Tokens
+   Premium nonprofit editorial design system
+   ============================================================ */
+
+@theme inline {
+  /* Brand palette */
+  --color-brand-primary: #173F35;        /* Deep Forest Green */
+  --color-brand-primary-dark: #102F28;   /* Dark green hover */
+  --color-brand-background: #F8F5EE;     /* Warm Ivory */
+  --color-brand-accent: #E8754A;         /* Warm Coral */
+  --color-brand-sage: #E6EDE5;           /* Sage Green */
+  --color-brand-sage-tint: #EEF3EC;      /* Light green tint */
+  --color-brand-charcoal: #252B28;       /* Charcoal text */
+  --color-brand-white: #FFFFFF;          /* Pure white */
+  --color-brand-muted: #66716B;          /* Muted text */
+  --color-brand-border: #E4E5DF;         /* Border */
+
+  /* Map shadcn tokens to brand palette */
+  --color-background: var(--color-brand-background);
+  --color-foreground: var(--color-brand-charcoal);
+  --color-card: var(--color-brand-white);
+  --color-card-foreground: var(--color-brand-charcoal);
+  --color-popover: var(--color-brand-white);
+  --color-popover-foreground: var(--color-brand-charcoal);
+  --color-primary: var(--color-brand-primary);
+  --color-primary-foreground: var(--color-brand-white);
+  --color-secondary: var(--color-brand-sage);
+  --color-secondary-foreground: var(--color-brand-primary);
+  --color-muted: var(--color-brand-sage);
+  --color-muted-foreground: var(--color-brand-muted);
+  --color-accent: var(--color-brand-accent);
+  --color-accent-foreground: var(--color-brand-white);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-border: var(--color-brand-border);
+  --color-input: var(--color-brand-border);
+  --color-ring: var(--color-brand-primary);
+
+  /* Chart colors (derived from brand palette) */
+  --color-chart-1: #173F35;
+  --color-chart-2: #E8754A;
+  --color-chart-3: #66716B;
+  --color-chart-4: #E6EDE5;
+  --color-chart-5: #102F28;
+
+  /* Sidebar tokens */
+  --color-sidebar: var(--color-brand-white);
+  --color-sidebar-foreground: var(--color-brand-charcoal);
+  --color-sidebar-primary: var(--color-brand-primary);
+  --color-sidebar-primary-foreground: var(--color-brand-white);
+  --color-sidebar-accent: var(--color-brand-sage);
+  --color-sidebar-accent-foreground: var(--color-brand-primary);
+  --color-sidebar-border: var(--color-brand-border);
+  --color-sidebar-ring: var(--color-brand-primary);
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Radii */
+  --radius: 0.875rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.875rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--color-brand-primary);
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-brand-accent);
+    color: var(--color-brand-white);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+/* Tailwind v4: custom utilities must be registered with @utility
+   (top-level, NOT inside @layer) so they can be used both as a
+   className directly AND as a target for @apply in other rules. */
+@utility label-small {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+@layer utilities {
+  /* Container with brand padding */
+  .container-brand {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-6 lg:px-12;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-6 lg:px-12;
+  }
+
+  /* Section spacing */
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  .section-spacing-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Heading utility */
+  .heading-hero {
+    @apply font-bold tracking-tight;
+    font-size: clamp(2.375rem, 5.5vw, 4.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .heading-page {
+    @apply font-bold tracking-tight;
+    font-size: clamp(2.125rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .heading-section {
+    @apply font-bold tracking-tight;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .heading-card {
+    @apply font-semibold;
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+    line-height: 1.25;
+  }
+
+  .body-base {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .body-lg {
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  /* Eyebrow label — uses the @utility label-small defined below */
+  .eyebrow {
+    @apply label-small inline-flex items-center gap-2;
+    color: var(--color-brand-accent);
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    @apply relative transition-colors;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Card hover */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 16px 40px -12px rgba(23, 63, 53, 0.18);
+  }
+
+  /* Custom scrollbar */
+  .scroll-area-brand::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-area-brand::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scroll-area-brand::-webkit-scrollbar-thumb {
+    background: var(--color-brand-border);
+    border-radius: 4px;
+  }
+  .scroll-area-brand::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-muted);
+  }
+
+  /* Gentle float for hero badge + decorative elements */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  /* Soft pulse for ambient blobs */
+  @keyframes soft-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+  .animate-soft-pulse {
+    animation: soft-pulse 6s ease-in-out infinite;
+  }
+
+  /* Marquee for partner rows */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 32s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-soft-pulse,
+    .animate-marquee {
+      animation: none;
+    }
+  }
+}
