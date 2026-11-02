@@ -43,8 +43,11 @@ export const metadata: Metadata = {
   creator: "Heroes For All",
   publisher: "Heroes For All",
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", type: "image/png", sizes: "64x64" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     type: "website",
