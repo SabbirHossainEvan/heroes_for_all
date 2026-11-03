@@ -28,8 +28,19 @@ const spotlightNames = [
   "The Daily Star",
 ];
 
-// Use published image assets for partners without a local logo file.
+// Use tightly cropped local files for legacy logos and published image assets
+// for partners that do not have a local logo file.
 const partnerLogoSources: Record<string, string> = {
+  "BRAC Bank": "/images/partners/cropped/brac-bank.png",
+  "Qatar Airways": "/images/partners/cropped/qatar-airways.png",
+  "City Bank": "/images/partners/cropped/city-bank.png",
+  "Islam Group": "/images/partners/cropped/islam-group.png",
+  "Triple Apparels Limited": "/images/partners/cropped/triple-apparels.png",
+  "Plummy Fashions Limited": "/images/partners/cropped/plummy-fashions.png",
+  "Lakeshore Hotels": "/images/partners/cropped/galaxy.png",
+  "Star Youth": "/images/partners/cropped/star-youth.png",
+  "The Daily Star": "/images/partners/cropped/daily-star.png",
+  "Assistance for Blind Children (ABC)": "/images/partners/cropped/abc.png",
   "Camp Abilities USA":
     "https://www.campabilities.org/uploads/4/0/0/0/40006217/published/screenshot-2023-11-28-at-4-23-25-pm.png",
   "North South University":
@@ -43,7 +54,7 @@ const partnerLogoSources: Record<string, string> = {
 };
 
 function getPartnerLogo(partner: Partner) {
-  return partner.logo ?? partnerLogoSources[partner.name];
+  return partnerLogoSources[partner.name] ?? partner.logo;
 }
 
 function getSpotlight() {
