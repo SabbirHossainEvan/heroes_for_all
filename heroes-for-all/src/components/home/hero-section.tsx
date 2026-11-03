@@ -49,7 +49,7 @@ const slides = [
   },
 ];
 
-const AUTOPLAY_DELAY = 1800;
+const AUTOPLAY_DELAY = 1500;
 
 export function HeroSection() {
   const [active, setActive] = useState(0);
@@ -60,7 +60,7 @@ export function HeroSection() {
   const slide = slides[active];
 
   useEffect(() => {
-    if (paused || hovered || focused || reduceMotion) return;
+    if (paused || hovered || focused) return;
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slides.length);
     }, AUTOPLAY_DELAY);
@@ -96,15 +96,35 @@ export function HeroSection() {
                 exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: -24 }}
                 transition={{ duration: reduceMotion ? 0.15 : 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
-                <span className="eyebrow">
+                <motion.span
+                  className="eyebrow"
+                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: reduceMotion ? 0 : 0.08, duration: 0.35 }}
+                >
                   <Sparkles className="h-3.5 w-3.5" aria-hidden />
                   {slide.eyebrow}
-                </span>
-                <h1 className="heading-hero mt-6 text-primary">{slide.title}</h1>
-                <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                </motion.span>
+                <motion.h1
+                  className="heading-hero mt-6 text-primary"
+                  initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: reduceMotion ? 0 : 0.14, duration: 0.4 }}
+                >{slide.title}</motion.h1>
+                <motion.p
+                  className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg"
+                  initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: reduceMotion ? 0 : 0.2, duration: 0.4 }}
+                >
                   {slide.description}
-                </p>
-                <div className="mt-7 flex flex-col gap-3 pt-1 sm:flex-row">
+                </motion.p>
+                <motion.div
+                  className="mt-7 flex flex-col gap-3 pt-1 sm:flex-row"
+                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: reduceMotion ? 0 : 0.26, duration: 0.35 }}
+                >
                   <Link
                     href="/donate"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-sm transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -119,7 +139,7 @@ export function HeroSection() {
                     Explore Programs
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
-                </div>
+                </motion.div>
               </motion.div>
             </AnimatePresence>
 
@@ -135,7 +155,7 @@ export function HeroSection() {
               <div className="flex items-center gap-2" role="group" aria-label="Choose a slide">
                 {slides.map((item, index) => (
                   <button
-                    key={item.image}
+                    key={item.imageLabel}
                     type="button"
                     onClick={() => changeSlide(index)}
                     aria-label={`Show slide ${index + 1}: ${item.imageLabel}`}
@@ -180,7 +200,7 @@ export function HeroSection() {
                   transition={{ duration: reduceMotion ? 0.15 : 0.55, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {slide.images.map((image, index) => (
-                    <div
+                    <motion.div
                       key={`${slide.imageLabel}-${image.src}`}
                       className={`relative overflow-hidden rounded-2xl bg-secondary shadow-md ring-1 ring-black/5 ${
                         index === 0 ? "col-span-4 row-span-4" :
@@ -188,6 +208,13 @@ export function HeroSection() {
                         index === 2 ? "col-span-2 row-span-3" :
                         "col-span-4 row-span-2"
                       }`}
+                      initial={reduceMotion ? false : { opacity: 0, y: index % 2 === 0 ? 14 : -10, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{
+                        delay: reduceMotion ? 0 : 0.12 + index * 0.09,
+                        duration: reduceMotion ? 0.15 : 0.42,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                     >
                       <Image
                         src={image.src}
@@ -197,7 +224,7 @@ export function HeroSection() {
                         sizes="(max-width: 1024px) 66vw, 34vw"
                         className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                       />
-                    </div>
+                    </motion.div>
                   ))}
                   <p className="pointer-events-none absolute bottom-4 left-4 rounded-full border border-white/25 bg-primary/75 px-4 py-2 text-sm font-semibold text-white shadow backdrop-blur-sm sm:bottom-5 sm:left-5">
                     {slide.imageLabel}
