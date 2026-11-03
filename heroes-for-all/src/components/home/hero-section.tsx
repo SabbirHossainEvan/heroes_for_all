@@ -13,8 +13,12 @@ const slides = [
     title: <>Building a generation of conscious, purposeful <span className="text-accent">global citizens.</span></>,
     description:
       "Heroes For All supports children and youth to realize their fullest potential through education, civic engagement, and cross-cultural collaboration.",
-    image: "/images/hero/social-building-mindset.jpg",
-    alt: "Young people taking part in a Heroes For All mindset-building activity",
+    images: [
+      { src: "/images/hero/social-building-mindset.jpg", alt: "Young people taking part in a Heroes For All mindset-building activity" },
+      { src: "/images/hero/social-shafat-memorial-school.jpg", alt: "Students learning at Shafat Memorial School" },
+      { src: "/images/hero/social-camp-abilities.jpg", alt: "Young people participating in a Camp Abilities activity" },
+      { src: "/images/hero/social-paara-utshab.jpg", alt: "Neighbors gathering at a Paara Utshob community event" },
+    ],
     imageLabel: "Building mindset",
   },
   {
@@ -22,8 +26,12 @@ const slides = [
     title: <>Every young person deserves the chance to <span className="text-accent">thrive.</span></>,
     description:
       "Camp Abilities Bangladesh brings children with visual impairments together with trained student counselors for inclusive sports, confidence, and connection.",
-    image: "/images/hero/social-camp-abilities.jpg",
-    alt: "Participants at a Camp Abilities Bangladesh activity",
+    images: [
+      { src: "/images/hero/social-camp-abilities.jpg", alt: "Participants at a Camp Abilities Bangladesh activity" },
+      { src: "/images/hero/social-building-mindset.jpg", alt: "Young people taking part in a mindset-building activity" },
+      { src: "/images/hero/social-shafat-memorial-school.jpg", alt: "Students learning at Shafat Memorial School" },
+      { src: "/images/hero/social-paara-utshab.jpg", alt: "Neighbors gathering at a Paara Utshob community event" },
+    ],
     imageLabel: "Camp Abilities Bangladesh",
   },
   {
@@ -31,8 +39,12 @@ const slides = [
     title: <>Stronger communities begin when we <span className="text-accent">come together.</span></>,
     description:
       "Through community programs and creative spaces, Heroes For All helps neighbors connect, share ideas, and take part in local life.",
-    image: "/images/hero/social-paara-utshab.jpg",
-    alt: "Community members gathered at a Paara Utshob neighborhood festival",
+    images: [
+      { src: "/images/hero/social-paara-utshab.jpg", alt: "Community members gathered at a Paara Utshob neighborhood festival" },
+      { src: "/images/hero/social-building-mindset.jpg", alt: "Young people taking part in a mindset-building activity" },
+      { src: "/images/hero/social-camp-abilities.jpg", alt: "Participants at a Camp Abilities Bangladesh activity" },
+      { src: "/images/hero/social-shafat-memorial-school.jpg", alt: "Students learning at Shafat Memorial School" },
+    ],
     imageLabel: "Paara Utshob",
   },
 ];
@@ -157,26 +169,37 @@ export function HeroSection() {
           </div>
 
           <div className="relative">
-            <div className="relative aspect-[5/4] overflow-hidden rounded-3xl bg-secondary shadow-xl ring-1 ring-black/5">
+            <div className="relative aspect-[5/4]">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
-                  key={slide.image}
-                  className="absolute inset-0"
+                  key={slide.imageLabel}
+                  className="absolute inset-0 grid grid-cols-6 grid-rows-6 gap-2.5 sm:gap-3"
                   initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 48 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: -32 }}
                   transition={{ duration: reduceMotion ? 0.15 : 0.55, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Image
-                    src={slide.image}
-                    alt={slide.alt}
-                    fill
-                    priority={active === 0}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-primary/65 via-transparent to-transparent" />
-                  <p className="absolute bottom-5 left-5 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
+                  {slide.images.map((image, index) => (
+                    <div
+                      key={`${slide.imageLabel}-${image.src}`}
+                      className={`relative overflow-hidden rounded-2xl bg-secondary shadow-md ring-1 ring-black/5 ${
+                        index === 0 ? "col-span-4 row-span-4" :
+                        index === 1 ? "col-span-2 row-span-3" :
+                        index === 2 ? "col-span-2 row-span-3" :
+                        "col-span-4 row-span-2"
+                      }`}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        priority={active === 0}
+                        sizes="(max-width: 1024px) 66vw, 34vw"
+                        className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                      />
+                    </div>
+                  ))}
+                  <p className="pointer-events-none absolute bottom-4 left-4 rounded-full border border-white/25 bg-primary/75 px-4 py-2 text-sm font-semibold text-white shadow backdrop-blur-sm sm:bottom-5 sm:left-5">
                     {slide.imageLabel}
                   </p>
                 </motion.div>
