@@ -4,6 +4,7 @@ import { Container } from "@/components/ui-brand/container";
 import { SectionHeading } from "@/components/ui-brand/section-heading";
 import { Reveal, StaggerGroup, StaggerItem, AnimatedCounter } from "@/components/ui-brand/reveal-stagger";
 import { partners, type Partner } from "@/data/content";
+import { getPartnerLogo } from "@/lib/partner-logos";
 import { getInitials, cn } from "@/lib/utils";
 
 const categories = ["Sponsor", "Programmatic", "Academic", "Media"] as const;
@@ -27,34 +28,6 @@ const spotlightNames = [
   "North South University",
   "The Daily Star",
 ];
-
-// Use tightly cropped local files for legacy logos and published image assets
-// for partners that do not have a local logo file.
-const partnerLogoSources: Record<string, string> = {
-  "BRAC Bank": "/images/partners/cropped/brac-bank.png",
-  "Qatar Airways": "/images/partners/cropped/qatar-airways.png",
-  "City Bank": "/images/partners/cropped/city-bank.png",
-  "Islam Group": "/images/partners/cropped/islam-group.png",
-  "Triple Apparels Limited": "/images/partners/cropped/triple-apparels.png",
-  "Plummy Fashions Limited": "/images/partners/cropped/plummy-fashions.png",
-  "Lakeshore Hotels": "/images/partners/cropped/galaxy.png",
-  "Star Youth": "/images/partners/cropped/star-youth.png",
-  "The Daily Star": "/images/partners/cropped/daily-star.png",
-  "Assistance for Blind Children (ABC)": "/images/partners/cropped/abc.png",
-  GlobalGiving: "/images/partners/cropped/globalgiving.png",
-  "Camp Abilities USA":
-    "https://www.campabilities.org/uploads/4/0/0/0/40006217/published/screenshot-2023-11-28-at-4-23-25-pm.png",
-  "North South University":
-    "https://pbs.twimg.com/profile_images/460501803428114432/6QnlkojZ_400x400.png",
-  "College at Brockport, SUNY":
-    "https://www.brockport.edu/live/image/gid/66/width/777/height/859/15944_BPT_LOGO_AllinOne_color_1.png",
-  "Penn State University":
-    "https://www.liblogo.com/img-logo/ps6353o1e3-psu-logo-other-university-symbols-penn-state-brand-book.png",
-};
-
-function getPartnerLogo(partner: Partner) {
-  return partnerLogoSources[partner.name] ?? partner.logo;
-}
 
 function getSpotlight() {
   return spotlightNames
