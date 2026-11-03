@@ -29,6 +29,21 @@ const spotlightNames = [
   "The Daily Star",
 ];
 
+// Some partner entries predate the local logo collection. Keep those logos
+// visible in the marquee using the organizations' published image assets.
+const marqueeLogoSources: Record<string, string> = {
+  "Camp Abilities USA":
+    "https://www.campabilities.org/uploads/4/0/0/0/40006217/published/screenshot-2023-11-28-at-4-23-25-pm.png",
+  "North South University":
+    "https://nsjpgs.com/frontend/images/North_South_University_Monogram.svg.png",
+  "College at Brockport, SUNY":
+    "https://www.brockport.edu/live/image/gid/66/width/777/height/859/15944_BPT_LOGO_AllinOne_color_1.png",
+  "Penn State University":
+    "https://www.liblogo.com/img-logo/ps6353o1e3-psu-logo-other-university-symbols-penn-state-brand-book.png",
+  GlobalGiving:
+    "https://images.seeklogo.com/logo-png/32/1/globalgiving-logo-png_seeklogo-321981.png",
+};
+
 function getSpotlight() {
   return spotlightNames
     .map((name) => partners.find((p) => p.name === name))
@@ -116,7 +131,7 @@ export function PartnersSection() {
   const totalCount = partners.length;
   const categoryCount = categories.length;
 
-  // Build a flat list of partner names for the marquee (duplicated for seamless loop)
+  // Duplicate the logo list for a seamless marquee loop.
   const marqueePartners = [...partners, ...partners];
 
   return (
@@ -162,17 +177,14 @@ export function PartnersSection() {
                   key={`${p.name}-${i}`}
                   className="flex items-center justify-center rounded-xl border border-border bg-card px-5 py-3 shrink-0 hover:border-accent/40 transition-colors"
                 >
-                  {p.logo ? (
-                    <BrandLogo
-                      src={p.logo}
+                  <div className="relative h-10 w-32 shrink-0">
+                    <img
+                      src={p.logo ?? marqueeLogoSources[p.name]}
                       alt={p.name}
-                      className="h-8 w-28 inline-block"
+                      className="h-full w-full object-contain p-1"
+                      loading="lazy"
                     />
-                  ) : (
-                    <span className="font-heading text-xs md:text-sm font-semibold text-primary whitespace-nowrap">
-                      {p.name}
-                    </span>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>
