@@ -41,6 +41,7 @@ const partnerLogoSources: Record<string, string> = {
   "Star Youth": "/images/partners/cropped/star-youth.png",
   "The Daily Star": "/images/partners/cropped/daily-star.png",
   "Assistance for Blind Children (ABC)": "/images/partners/cropped/abc.png",
+  GlobalGiving: "/images/partners/cropped/globalgiving.png",
   "Camp Abilities USA":
     "https://www.campabilities.org/uploads/4/0/0/0/40006217/published/screenshot-2023-11-28-at-4-23-25-pm.png",
   "North South University":
@@ -49,8 +50,6 @@ const partnerLogoSources: Record<string, string> = {
     "https://www.brockport.edu/live/image/gid/66/width/777/height/859/15944_BPT_LOGO_AllinOne_color_1.png",
   "Penn State University":
     "https://www.liblogo.com/img-logo/ps6353o1e3-psu-logo-other-university-symbols-penn-state-brand-book.png",
-  GlobalGiving:
-    "https://images.seeklogo.com/logo-png/32/1/globalgiving-logo-png_seeklogo-321981.png",
 };
 
 function getPartnerLogo(partner: Partner) {
