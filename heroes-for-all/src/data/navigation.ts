@@ -149,8 +149,8 @@ export const contactInfo = {
 };
 
 export const socialLinks = {
-  facebook: "https://www.facebook.com/heroesforall.org",
-  instagram: "https://www.instagram.com/heroesforall",
-  youtube: "https://www.youtube.com/@heroesforall",
-  linkedin: "https://www.linkedin.com/company/heroesforall",
+  facebook: "https://www.facebook.com/Heroesforall",
+  instagram: "https://www.instagram.com/heroesforall.inc/",
+  youtube: "https://www.youtube.com/@heroesforallinc.018",
+  linkedin: "https://www.linkedin.com/company/heroesforall/posts/",
 };
