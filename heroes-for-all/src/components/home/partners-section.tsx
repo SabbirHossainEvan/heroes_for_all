@@ -35,7 +35,7 @@ const marqueeLogoSources: Record<string, string> = {
   "Camp Abilities USA":
     "https://www.campabilities.org/uploads/4/0/0/0/40006217/published/screenshot-2023-11-28-at-4-23-25-pm.png",
   "North South University":
-    "https://nsjpgs.com/frontend/images/North_South_University_Monogram.svg.png",
+    "https://pbs.twimg.com/profile_images/460501803428114432/6QnlkojZ_400x400.png",
   "College at Brockport, SUNY":
     "https://www.brockport.edu/live/image/gid/66/width/777/height/859/15944_BPT_LOGO_AllinOne_color_1.png",
   "Penn State University":
@@ -175,13 +175,13 @@ export function PartnersSection() {
               {marqueePartners.map((p, i) => (
                 <div
                   key={`${p.name}-${i}`}
-                  className="flex items-center justify-center rounded-xl border border-border bg-card px-5 py-3 shrink-0 hover:border-accent/40 transition-colors"
+                  className="flex h-[82px] w-[210px] items-center justify-center rounded-xl border border-border bg-card px-5 py-3 shrink-0 hover:border-accent/40 transition-colors"
                 >
-                  <div className="relative h-10 w-32 shrink-0">
+                  <div className="relative h-full w-full min-w-0">
                     <img
                       src={p.logo ?? marqueeLogoSources[p.name]}
                       alt={p.name}
-                      className="h-full w-full object-contain p-1"
+                      className="h-full w-full object-contain"
                       loading="lazy"
                     />
                   </div>
