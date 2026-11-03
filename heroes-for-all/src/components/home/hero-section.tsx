@@ -49,7 +49,7 @@ const slides = [
   },
 ];
 
-const AUTOPLAY_DELAY = 6500;
+const AUTOPLAY_DELAY = 1800;
 
 export function HeroSection() {
   const [active, setActive] = useState(0);
