@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, Building2, Handshake, GraduationCap, Newspaper, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui-brand/container";
 import { SectionHeading } from "@/components/ui-brand/section-heading";
-import { BrandLogo } from "@/components/ui-brand/brand-image";
 import { Reveal, StaggerGroup, StaggerItem, AnimatedCounter } from "@/components/ui-brand/reveal-stagger";
 import { partners, type Partner } from "@/data/content";
 import { getInitials, cn } from "@/lib/utils";
@@ -29,9 +28,8 @@ const spotlightNames = [
   "The Daily Star",
 ];
 
-// Some partner entries predate the local logo collection. Keep those logos
-// visible in the marquee using the organizations' published image assets.
-const marqueeLogoSources: Record<string, string> = {
+// Use published image assets for partners without a local logo file.
+const partnerLogoSources: Record<string, string> = {
   "Camp Abilities USA":
     "https://www.campabilities.org/uploads/4/0/0/0/40006217/published/screenshot-2023-11-28-at-4-23-25-pm.png",
   "North South University":
@@ -44,6 +42,10 @@ const marqueeLogoSources: Record<string, string> = {
     "https://images.seeklogo.com/logo-png/32/1/globalgiving-logo-png_seeklogo-321981.png",
 };
 
+function getPartnerLogo(partner: Partner) {
+  return partner.logo ?? partnerLogoSources[partner.name];
+}
+
 function getSpotlight() {
   return spotlightNames
     .map((name) => partners.find((p) => p.name === name))
@@ -53,6 +55,8 @@ function getSpotlight() {
 function PartnerCard({ partner, featured = false }: { partner: Partner; featured?: boolean }) {
   const meta = categoryMeta[partner.category];
   const Icon = meta.icon;
+  const logo = getPartnerLogo(partner);
+
   return (
     <div
       className={cn(
@@ -62,15 +66,20 @@ function PartnerCard({ partner, featured = false }: { partner: Partner; featured
     >
       {/* Top row: logo (or monogram) + verified badge */}
       <div className="flex items-start justify-between">
-        {partner.logo ? (
-          <BrandLogo
-            src={partner.logo}
-            alt={partner.name}
+        {logo ? (
+          <div
             className={cn(
-              "relative w-full rounded-xl bg-secondary/60",
-              featured ? "h-14" : "h-12",
+              "relative min-w-0 flex-1 rounded-xl bg-secondary/60",
+              featured ? "h-16" : "h-14",
             )}
-          />
+          >
+            <img
+              src={logo}
+              alt={partner.name}
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          </div>
         ) : (
           <span
             className={cn(
@@ -179,7 +188,7 @@ export function PartnersSection() {
                 >
                   <div className="relative h-full w-full min-w-0">
                     <img
-                      src={p.logo ?? marqueeLogoSources[p.name]}
+                      src={getPartnerLogo(p)}
                       alt={p.name}
                       className="h-full w-full object-contain"
                       loading="lazy"
