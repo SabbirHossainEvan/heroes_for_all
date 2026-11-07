@@ -1,0 +1,47 @@
+[
+    {
+        "title":  "Heroes for all Intro",
+        "video":  "/videos/gallery/hfa-intro.mp4",
+        "poster":  "/images/video-gallery/intro-video-poster.jpg"
+    },
+    {
+        "title":  "Paara Utshab 2019",
+        "video":  "/videos/gallery/para-utshob-video.mp4",
+        "poster":  "/images/video-gallery/pu-video-poster.jpg"
+    },
+    {
+        "title":  "Camp Abilities (ATN News)",
+        "video":  "/videos/gallery/camp-abilities-video.mp4",
+        "poster":  "/images/video-gallery/camp-abilities-video-poster.jpg"
+    },
+    {
+        "title":  "SDG Program",
+        "video":  "/videos/gallery/nagorik-tv.mov",
+        "poster":  "/images/video-gallery/sdg-program-video-poster.jpg"
+    },
+    {
+        "title":  "প্রতিবেশীদের নিয়ে গুলশানে শুরু ‘পাড়া উৎসব’",
+        "video":  "/videos/gallery/jogo-news-pu-main.mp4",
+        "poster":  "/images/video-gallery/jn-video-poster.jpg"
+    },
+    {
+        "title":  "শহুরে জীবনে গ্রামীণ পরিবেশ",
+        "video":  "/videos/gallery/independent-tv-pu.mp4",
+        "poster":  "/images/video-gallery/itv-video-poster.jpg"
+    },
+    {
+        "title":  "টিয়া পাখি দিয়ে ভাগ্য জানলেন যুক্তরাষ্ট্রের রাষ্ট্রদূত",
+        "video":  "/videos/gallery/jogo-news-pu-sub.mp4",
+        "poster":  "/images/video-gallery/jn-video-poster.jpg"
+    },
+    {
+        "title":  "চোখ বেঁধে ব্যাটিং করলেন মাশরাফি-মুশফিক!",
+        "video":  "/videos/gallery/camp-abilities-prothom-alo.mp4",
+        "poster":  "/images/video-gallery/camp-abilities-video-poster.jpg"
+    },
+    {
+        "title":  "Women\u0027s Career Carnival - 2023",
+        "video":  "/videos/gallery/trailer-of-carnival.mp4",
+        "poster":  "/images/video-gallery/women-career-carnival-video-poster.jpg.jpg"
+    }
+]
