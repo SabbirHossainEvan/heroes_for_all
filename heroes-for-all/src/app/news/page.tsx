@@ -8,6 +8,7 @@ import { BrandImage } from "@/components/ui-brand/brand-image";
 import { PlaceholderImage } from "@/components/ui-brand/placeholder-image";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui-brand/reveal-stagger";
 import { newsArticles } from "@/data/content";
+import referenceNews from "@/data/reference-news.json";
 import { formatDate } from "@/lib/utils";
 import { ArrowRight, CalendarDays } from "lucide-react";
 
@@ -101,6 +102,64 @@ export default function NewsPage() {
               </div>
             </Link>
           </Reveal>
+        </Container>
+      </section>
+
+      {/* Reference site archive */}
+      <section className="section-spacing">
+        <Container size="wide">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Original site archive"
+              title="More news from Heroes For All."
+            />
+            <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
+              News, stories, and press coverage from the Heroes For All archive.
+            </p>
+          </Reveal>
+          <StaggerGroup
+            className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+            staggerChildren={0.03}
+            as="ul"
+          >
+            {referenceNews.map((article) => (
+              <StaggerItem key={article.id} as="li">
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card">
+                  <BrandImage
+                    src={article.image}
+                    alt={article.imageAlt || article.title}
+                    aspect="video"
+                  />
+                  <div className="flex flex-1 flex-col gap-3 p-5">
+                    <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                      <CalendarDays className="h-3.5 w-3.5" aria-hidden />
+                      {formatDate(article.date)}
+                    </span>
+                    <h3 className="font-heading text-base font-semibold leading-tight text-primary">
+                      {article.title}
+                    </h3>
+                    {article.excerpt && (
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {article.excerpt}
+                      </p>
+                    )}
+                    {article.paragraphs.length > 0 && (
+                      <details className="group mt-auto border-t border-border pt-3">
+                        <summary className="cursor-pointer list-none text-sm font-semibold text-primary marker:hidden">
+                          Read full story
+                        </summary>
+                        <div className="mt-3 space-y-3 text-sm leading-relaxed text-muted-foreground">
+                          {article.paragraphs.map((paragraph, index) => (
+                            <p key={`${article.id}-${index}`}>{paragraph}</p>
+                          ))}
+                        </div>
+                      </details>
+                    )}
+                  </div>
+                </article>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
         </Container>
       </section>
 

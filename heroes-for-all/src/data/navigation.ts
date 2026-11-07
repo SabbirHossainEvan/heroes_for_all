@@ -51,13 +51,15 @@ export const mainNav: NavGroup[] = [
     ],
   },
   {
-    label: "Stories",
+    label: "News & Resources",
     href: "/news",
     description: "Press, news, and video",
     children: [
       { label: "News & Articles", href: "/news", description: "Latest updates and stories" },
       { label: "Press Releases", href: "/news/press-releases", description: "Official statements" },
       { label: "Video Gallery", href: "/news/video-gallery", description: "Watch our work in motion" },
+      { label: "FAQ", href: "/faq", description: "Answers to common questions" },
+      { label: "Upcoming Events", href: "/events", description: "What is happening next" },
     ],
   },
   {
