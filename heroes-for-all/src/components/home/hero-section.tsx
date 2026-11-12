@@ -66,20 +66,19 @@ const AUTOPLAY_DELAY = 7000;
 export function HeroSection() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const reduceMotion = useReducedMotion();
   const slide = slides[active];
 
   useEffect(() => {
-    if (paused || hovered || focused || reduceMotion) return;
+    if (paused || focused) return;
 
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % slides.length);
     }, AUTOPLAY_DELAY);
 
     return () => window.clearInterval(timer);
-  }, [paused, hovered, focused, reduceMotion]);
+  }, [paused, focused]);
 
   const changeSlide = (index: number) => {
     setActive((index + slides.length) % slides.length);
@@ -91,8 +90,6 @@ export function HeroSection() {
       role="region"
       aria-roledescription="carousel"
       aria-label="Heroes For All highlights"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
