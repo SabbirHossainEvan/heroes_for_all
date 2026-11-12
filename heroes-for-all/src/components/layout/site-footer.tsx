@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
           {/* Brand block */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <Logo variant="light" />
+            <Logo variant="light" className="w-full justify-center" />
             <p className="text-sm leading-relaxed text-primary-foreground/80 max-w-sm">
               A youth-focused nonprofit building conscious, purposeful, and
               engaged global citizens through education, community engagement,
