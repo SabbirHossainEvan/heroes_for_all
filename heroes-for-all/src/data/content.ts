@@ -18,6 +18,7 @@ import {
   TrendingUp,
   Briefcase,
 } from "lucide-react";
+import programMedia from "./program-media.json";
 
 /* ------------------------------------------------------------------ */
 /* Mission & Vision                                                    */
@@ -124,7 +125,8 @@ export const programs: Program[] = [
   {
     slug: "knowledge-sessions",
     title: "Knowledge Sessions",
-    image: "/images/programs/building-mindset.jpg",
+    image: programMedia["knowledge-sessions"].image,
+    gallery: programMedia["knowledge-sessions"].gallery,
     category: "Education",
     excerpt: "Workshops and seminars that equip youth with life, career, and civic skills.",
     description:
@@ -145,7 +147,8 @@ export const programs: Program[] = [
   {
     slug: "camp-abilities-bangladesh",
     title: "Camp Abilities Bangladesh",
-    image: "/images/programs/camp-abilities.jpg",
+    image: programMedia["camp-abilities-bangladesh"].image,
+    gallery: programMedia["camp-abilities-bangladesh"].gallery,
     category: "Community",
     excerpt: "A developmental sports camp for visually impaired children, in partnership with Camp Abilities USA.",
     description:
@@ -166,15 +169,8 @@ export const programs: Program[] = [
   {
     slug: "school-project",
     title: "School Project",
-    image: "/images/programs/school-project-banner.jpg",
-    gallery: [
-      "/images/programs/gallery-school-project-1.jpg",
-      "/images/programs/gallery-school-project-2.jpg",
-      "/images/programs/gallery-school-project-3.jpg",
-      "/images/programs/gallery-school-project-4.jpg",
-      "/images/programs/gallery-school-project-5.jpg",
-      "/images/programs/gallery-school-project-6.jpg",
-    ],
+    image: programMedia["school-project"].image,
+    gallery: programMedia["school-project"].gallery,
     category: "Education",
     excerpt: "Making a school is the key to unlocking the world — building schools where they are needed most.",
     description:
@@ -194,8 +190,9 @@ export const programs: Program[] = [
   },
   {
     slug: "paara-utshob",
-    title: "Paara Utshob",
-    image: "/images/hero/social-paara-utshab.jpg",
+    title: "Community Engagement – Paara Utshob",
+    image: programMedia["paara-utshob"].image,
+    gallery: programMedia["paara-utshob"].gallery,
     category: "Community",
     excerpt: "A neighborhood festival that revives public spaces and brings communities together.",
     description:
@@ -216,7 +213,8 @@ export const programs: Program[] = [
   {
     slug: "photo-palooza",
     title: "Photo Palooza",
-    image: "/images/programs/photo-palooza.jpg",
+    image: programMedia["photo-palooza"].image,
+    gallery: programMedia["photo-palooza"].gallery,
     category: "Culture",
     excerpt: "A celebration of youth photography and visual storytelling.",
     description:
@@ -236,7 +234,8 @@ export const programs: Program[] = [
   {
     slug: "cross-cultural-programs",
     title: "Cross-Cultural Programs",
-    image: "/images/programs/cross-cultural.jpg",
+    image: programMedia["cross-cultural-programs"].image,
+    gallery: programMedia["cross-cultural-programs"].gallery,
     category: "Culture",
     excerpt: "International exchange of ideas, students, and practice across borders.",
     description:
@@ -256,7 +255,8 @@ export const programs: Program[] = [
   {
     slug: "covid-19-relief",
     title: "COVID-19 Relief",
-    image: "/images/campaigns/food-distribution.jpg",
+    image: programMedia["covid-19-relief"].image,
+    gallery: programMedia["covid-19-relief"].gallery,
     category: "Relief",
     excerpt: "Emergency food, supplies, and remote-learning support for families during the pandemic.",
     description:
@@ -276,7 +276,8 @@ export const programs: Program[] = [
   {
     slug: "tree-plantation",
     title: "Tree Plantation",
-    image: "/images/programs/tree-plantation.jpg",
+    image: programMedia["tree-plantation"].image,
+    gallery: programMedia["tree-plantation"].gallery,
     category: "Environment",
     excerpt: "Environmental stewardship through community-led tree plantation drives.",
     description:
@@ -296,7 +297,8 @@ export const programs: Program[] = [
   {
     slug: "eid-gift-distribution",
     title: "Eid Gift Distribution",
-    image: "/images/programs/event-banner.jpg",
+    image: programMedia["eid-gift-distribution"].image,
+    gallery: programMedia["eid-gift-distribution"].gallery,
     category: "Relief",
     excerpt: "Sharing the joy of Eid with children and families who need it most.",
     description:
@@ -316,7 +318,8 @@ export const programs: Program[] = [
   {
     slug: "rise-to-independence",
     title: "Rise to Independence",
-    image: "/images/programs/community-engagement.jpg",
+    image: programMedia["rise-to-independence"].image,
+    gallery: programMedia["rise-to-independence"].gallery,
     category: "Education",
     excerpt: "Empowering youth with the skills, mentorship, and confidence to live self-reliant lives.",
     description:
@@ -336,7 +339,8 @@ export const programs: Program[] = [
   {
     slug: "womens-career-carnival",
     title: "Women's Career Carnival",
-    image: "/images/programs/womens-career-carnival.jpg",
+    image: programMedia["womens-career-carnival"].image,
+    gallery: programMedia["womens-career-carnival"].gallery,
     category: "Culture",
     excerpt: "A celebration and convening of women in the workforce, from students to senior leaders.",
     description:

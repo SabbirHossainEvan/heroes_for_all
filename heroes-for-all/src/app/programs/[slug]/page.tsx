@@ -121,7 +121,7 @@ export default async function ProgramDetailPage({
         </Container>
       </section>
 
-      {/* Gallery (school-project) */}
+      {/* Program image gallery */}
       {program.gallery && program.gallery.length > 0 && (
         <section className="section-spacing">
           <Container size="wide">
