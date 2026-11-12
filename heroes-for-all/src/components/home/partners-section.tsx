@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Building2, Handshake, GraduationCap, Newspaper, Sparkles } from "lucide-react";
+import { ArrowRight, Building2, Handshake, GraduationCap, Newspaper, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui-brand/container";
 import { SectionHeading } from "@/components/ui-brand/section-heading";
 import { Reveal, StaggerGroup, StaggerItem, AnimatedCounter } from "@/components/ui-brand/reveal-stagger";
 import { partners, type Partner } from "@/data/content";
 import { getPartnerLogo } from "@/lib/partner-logos";
-import { getInitials, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const categories = ["Sponsor", "Programmatic", "Academic", "Media"] as const;
 
@@ -36,77 +36,29 @@ function getSpotlight() {
 }
 
 function PartnerCard({ partner, featured = false }: { partner: Partner; featured?: boolean }) {
-  const meta = categoryMeta[partner.category];
-  const Icon = meta.icon;
   const logo = getPartnerLogo(partner);
+
+  if (!logo) return null;
 
   return (
     <div
       className={cn(
-        "group relative flex flex-col gap-3 rounded-2xl border bg-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-accent/40",
-        featured ? "p-5 md:p-6 border-border" : "p-4 md:p-5 border-border",
+        "group relative flex items-center justify-center rounded-2xl border border-border bg-card transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg",
+        featured ? "p-5 md:p-6" : "p-4 md:p-5",
       )}
     >
-      {/* Top row: logo (or monogram) + verified badge */}
-      <div className="flex items-start justify-between">
-        {logo ? (
-          <div
-            className={cn(
-              "relative min-w-0 flex-1 rounded-xl bg-secondary/60",
-              featured ? "h-16" : "h-14",
-            )}
-          >
-            <img
-              src={logo}
-              alt={partner.name}
-              className="h-full w-full object-contain"
-              loading="lazy"
-            />
-          </div>
-        ) : (
-          <span
-            className={cn(
-              "inline-flex items-center justify-center rounded-xl font-heading font-bold text-primary-foreground transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3",
-              featured
-                ? "h-12 w-12 text-base bg-gradient-to-br from-primary to-primary-dark"
-                : "h-10 w-10 text-sm bg-primary",
-            )}
-            aria-hidden
-          >
-            {getInitials(partner.name)}
-          </span>
+      <div
+        className={cn(
+          "relative w-full rounded-xl bg-secondary/60",
+          featured ? "h-16" : "h-14",
         )}
-        <BadgeCheck
-          className={cn(
-            "h-4 w-4 text-accent/0 group-hover:text-accent transition-colors duration-300",
-            featured && "text-accent",
-          )}
-          aria-hidden
+      >
+        <img
+          src={logo}
+          alt={partner.name}
+          className="h-full w-full object-contain"
+          loading="lazy"
         />
-      </div>
-
-      {/* Name + sector chip */}
-      <div className="flex flex-col gap-2">
-        <h3
-          className={cn(
-            "font-heading font-semibold text-primary leading-snug",
-            featured ? "text-base md:text-lg" : "text-sm md:text-base",
-          )}
-        >
-          {partner.name}
-        </h3>
-        <span
-          className={cn(
-            "inline-flex items-center gap-1 self-start rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider",
-            meta.chipVariant === "primary" && "bg-primary/10 text-primary",
-            meta.chipVariant === "accent"  && "bg-accent/10 text-accent",
-            meta.chipVariant === "sage"    && "bg-secondary text-primary",
-            meta.chipVariant === "outline" && "border border-border text-muted-foreground",
-          )}
-        >
-          <Icon className="h-2.5 w-2.5" aria-hidden />
-          {partner.category}
-        </span>
       </div>
 
       {/* hover accent line at bottom */}
