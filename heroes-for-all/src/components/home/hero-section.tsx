@@ -61,6 +61,16 @@ const slides = [
   },
 ];
 
+slides.push({
+  eyebrow: "Community — Paara Utshob",
+  title: <>Paara Utshob is back.</>,
+  description: "Stay tuned for details.",
+  image: "/Untitled-1.png",
+  imageAlt: "Paara Utshob is back. Stay tuned for details.",
+  imagePosition: "center",
+  imageLabel: "Paara Utshob is back",
+});
+
 const AUTOPLAY_DELAY = 7000;
 
 export function HeroSection() {
@@ -69,6 +79,7 @@ export function HeroSection() {
   const [focused, setFocused] = useState(false);
   const reduceMotion = useReducedMotion();
   const slide = slides[active];
+  const isBanner = slide.image === "/Untitled-1.png";
 
   useEffect(() => {
     if (paused || focused) return;
@@ -86,7 +97,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative isolate flex min-h-[680px] w-full overflow-hidden bg-primary text-white md:min-h-[720px]"
+      className={`relative isolate flex w-full overflow-hidden ${isBanner ? "min-h-[260px] bg-[#fff9e8] text-primary sm:min-h-[380px] md:min-h-[560px]" : "min-h-[680px] bg-primary text-white md:min-h-[720px]"}`}
       role="region"
       aria-roledescription="carousel"
       aria-label="Heroes For All highlights"
@@ -103,7 +114,7 @@ export function HeroSection() {
           <motion.div
             key={slide.image}
             className="absolute inset-0"
-            initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.035 }}
+            initial={{ opacity: 0, scale: reduceMotion || isBanner ? 1 : 1.035 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduceMotion ? 0.15 : 0.85, ease: "easeOut" }}
@@ -114,17 +125,19 @@ export function HeroSection() {
               fill
               priority={active === 0}
               sizes="100vw"
-              className="object-cover"
+              className={isBanner ? "object-contain" : "object-cover"}
               style={{ objectPosition: slide.imagePosition }}
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-primary/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#102F28]/95 via-[#102F28]/75 to-[#102F28]/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#102F28]/75 via-transparent to-[#102F28]/10" />
+        {!isBanner && <>
+          <div className="absolute inset-0 bg-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#102F28]/95 via-[#102F28]/75 to-[#102F28]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#102F28]/75 via-transparent to-[#102F28]/10" />
+        </>}
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-5 pb-36 pt-20 sm:px-8 md:pb-40 lg:px-12">
+      {!isBanner && <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-5 pb-36 pt-20 sm:px-8 md:pb-40 lg:px-12">
         <div className="max-w-3xl">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
@@ -166,13 +179,13 @@ export function HeroSection() {
             </motion.div>
           </AnimatePresence>
         </div>
-      </div>
+      </div>}
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#102F28]/80 to-transparent" />
+      {!isBanner && <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#102F28]/80 to-transparent" />}
 
       <div className="absolute inset-x-0 bottom-0">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 pb-6 sm:px-8 sm:pb-8 lg:flex-row lg:items-end lg:justify-between lg:px-12">
-          <div className="flex items-center gap-3" role="group" aria-label="Slide controls">
+          <div className={`flex items-center gap-3 ${isBanner ? "rounded-full bg-primary/90 px-3 py-2 text-white shadow-lg" : ""}`} role="group" aria-label="Slide controls">
             <button
               type="button"
               onClick={() => changeSlide(active - 1)}
@@ -229,7 +242,7 @@ export function HeroSection() {
             )}
           </div>
 
-          <p className="hidden text-sm font-medium text-white/80 lg:block">
+          <p className={`hidden text-sm font-medium lg:block ${isBanner ? "text-primary" : "text-white/80"}`}>
             {slide.imageLabel}
           </p>
         </div>
