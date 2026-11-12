@@ -713,8 +713,8 @@ export const upcomingEvents = [
     status: "open",
   },
   {
-    title: "Paara Utshob 2025",
-    date: "2025-12-22",
+    title: "Paara Utshob 2026",
+    date: "2026-12-04",
     location: "Community partner site, Dhaka",
     description:
       "Our flagship neighborhood festival returns for a new edition. Open to the public.",
