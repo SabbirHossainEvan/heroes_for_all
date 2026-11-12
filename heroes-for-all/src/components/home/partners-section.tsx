@@ -2,9 +2,9 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, Building2, Handshake, GraduationCap, Newspaper, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui-brand/container";
 import { SectionHeading } from "@/components/ui-brand/section-heading";
-import { BrandLogo } from "@/components/ui-brand/brand-image";
 import { Reveal, StaggerGroup, StaggerItem, AnimatedCounter } from "@/components/ui-brand/reveal-stagger";
 import { partners, type Partner } from "@/data/content";
+import { getPartnerLogo } from "@/lib/partner-logos";
 import { getInitials, cn } from "@/lib/utils";
 
 const categories = ["Sponsor", "Programmatic", "Academic", "Media"] as const;
@@ -29,21 +29,6 @@ const spotlightNames = [
   "The Daily Star",
 ];
 
-// Some partner entries predate the local logo collection. Keep those logos
-// visible in the marquee using the organizations' published image assets.
-const marqueeLogoSources: Record<string, string> = {
-  "Camp Abilities USA":
-    "https://www.campabilities.org/uploads/4/0/0/0/40006217/published/screenshot-2023-11-28-at-4-23-25-pm.png",
-  "North South University":
-    "https://nsjpgs.com/frontend/images/North_South_University_Monogram.svg.png",
-  "College at Brockport, SUNY":
-    "https://www.brockport.edu/live/image/gid/66/width/777/height/859/15944_BPT_LOGO_AllinOne_color_1.png",
-  "Penn State University":
-    "https://www.liblogo.com/img-logo/ps6353o1e3-psu-logo-other-university-symbols-penn-state-brand-book.png",
-  GlobalGiving:
-    "https://images.seeklogo.com/logo-png/32/1/globalgiving-logo-png_seeklogo-321981.png",
-};
-
 function getSpotlight() {
   return spotlightNames
     .map((name) => partners.find((p) => p.name === name))
@@ -53,6 +38,8 @@ function getSpotlight() {
 function PartnerCard({ partner, featured = false }: { partner: Partner; featured?: boolean }) {
   const meta = categoryMeta[partner.category];
   const Icon = meta.icon;
+  const logo = getPartnerLogo(partner);
+
   return (
     <div
       className={cn(
@@ -62,15 +49,20 @@ function PartnerCard({ partner, featured = false }: { partner: Partner; featured
     >
       {/* Top row: logo (or monogram) + verified badge */}
       <div className="flex items-start justify-between">
-        {partner.logo ? (
-          <BrandLogo
-            src={partner.logo}
-            alt={partner.name}
+        {logo ? (
+          <div
             className={cn(
-              "relative w-full rounded-xl bg-secondary/60",
-              featured ? "h-14" : "h-12",
+              "relative min-w-0 flex-1 rounded-xl bg-secondary/60",
+              featured ? "h-16" : "h-14",
             )}
-          />
+          >
+            <img
+              src={logo}
+              alt={partner.name}
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          </div>
         ) : (
           <span
             className={cn(
@@ -175,13 +167,13 @@ export function PartnersSection() {
               {marqueePartners.map((p, i) => (
                 <div
                   key={`${p.name}-${i}`}
-                  className="flex items-center justify-center rounded-xl border border-border bg-card px-5 py-3 shrink-0 hover:border-accent/40 transition-colors"
+                  className="flex h-[82px] w-[210px] items-center justify-center rounded-xl border border-border bg-card px-5 py-3 shrink-0 hover:border-accent/40 transition-colors"
                 >
-                  <div className="relative h-10 w-32 shrink-0">
+                  <div className="relative h-full w-full min-w-0">
                     <img
-                      src={p.logo ?? marqueeLogoSources[p.name]}
+                      src={getPartnerLogo(p)}
                       alt={p.name}
-                      className="h-full w-full object-contain p-1"
+                      className="h-full w-full object-contain"
                       loading="lazy"
                     />
                   </div>

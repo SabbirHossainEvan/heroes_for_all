@@ -6,6 +6,7 @@ import { BrandButton } from "@/components/ui-brand/button";
 import { BrandBadge } from "@/components/ui-brand/badge";
 import { Reveal } from "@/components/ui-brand/reveal-stagger";
 import { partners, type Partner } from "@/data/content";
+import { getPartnerLogo } from "@/lib/partner-logos";
 import { ArrowRight, Building2, GraduationCap, Newspaper, HandHeart } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -106,10 +107,15 @@ export default function OurPartnersPage() {
                   {items.map((p) => (
                     <li
                       key={p.name}
-                      className="card-hover flex h-full flex-col justify-between gap-3 rounded-2xl border border-border bg-card p-5"
+                      className="card-hover flex h-full flex-col gap-4 rounded-2xl border border-border bg-card p-5"
                     >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
-                        <Icon className="h-5 w-5" aria-hidden />
+                      <div className="flex h-28 w-full items-center justify-center rounded-xl bg-secondary/50">
+                        <img
+                          src={getPartnerLogo(p)}
+                          alt={p.name}
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                        />
                       </div>
                       <h3 className="font-heading text-base font-semibold text-primary leading-tight">
                         {p.name}

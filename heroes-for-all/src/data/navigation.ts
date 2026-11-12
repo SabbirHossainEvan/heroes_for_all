@@ -40,7 +40,7 @@ export const mainNav: NavGroup[] = [
       { label: "Knowledge Sessions", href: "/programs/knowledge-sessions", description: "Workshops for youth development" },
       { label: "Camp Abilities Bangladesh", href: "/programs/camp-abilities-bangladesh", description: "Sports camp for visually impaired children" },
       { label: "School Project", href: "/programs/school-project", description: "Building schools to unlock the world" },
-      { label: "Paara Utshob", href: "/programs/paara-utshob", description: "Community engagement festivals" },
+      { label: "Community Engagement – Paara Utshob", href: "/programs/paara-utshob", description: "The neighborhood festival and community gathering" },
       { label: "Photo Palooza", href: "/programs/photo-palooza", description: "Youth photography celebration" },
       { label: "Cross-Cultural Programs", href: "/programs/cross-cultural-programs", description: "Global exchange of ideas" },
       { label: "COVID-19 Relief", href: "/programs/covid-19-relief", description: "Emergency community support" },
@@ -51,13 +51,15 @@ export const mainNav: NavGroup[] = [
     ],
   },
   {
-    label: "Stories",
+    label: "News & Resources",
     href: "/news",
     description: "Press, news, and video",
     children: [
       { label: "News & Articles", href: "/news", description: "Latest updates and stories" },
       { label: "Press Releases", href: "/news/press-releases", description: "Official statements" },
       { label: "Video Gallery", href: "/news/video-gallery", description: "Watch our work in motion" },
+      { label: "FAQ", href: "/faq", description: "Answers to common questions" },
+      { label: "Upcoming Events", href: "/events", description: "What is happening next" },
     ],
   },
   {
@@ -107,7 +109,7 @@ export const footerNav: NavGroup[] = [
       { label: "All Programs", href: "/programs" },
       { label: "Camp Abilities", href: "/programs/camp-abilities-bangladesh" },
       { label: "School Project", href: "/programs/school-project" },
-      { label: "Paara Utshob", href: "/programs/paara-utshob" },
+      { label: "Community Engagement – Paara Utshob", href: "/programs/paara-utshob" },
       { label: "Knowledge Sessions", href: "/programs/knowledge-sessions" },
     ],
   },
@@ -149,8 +151,8 @@ export const contactInfo = {
 };
 
 export const socialLinks = {
-  facebook: "https://www.facebook.com/heroesforall.org",
-  instagram: "https://www.instagram.com/heroesforall",
-  youtube: "https://www.youtube.com/@heroesforall",
-  linkedin: "https://www.linkedin.com/company/heroesforall",
+  facebook: "https://www.facebook.com/Heroesforall",
+  instagram: "https://www.instagram.com/heroesforall.inc/",
+  youtube: "https://www.youtube.com/@heroesforallinc.018",
+  linkedin: "https://www.linkedin.com/company/heroesforall/posts/",
 };
