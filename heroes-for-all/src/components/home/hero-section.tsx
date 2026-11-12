@@ -39,8 +39,8 @@ const slides = [
     ),
     description:
       "Camp Abilities Bangladesh brings children with visual impairments together with trained student counselors for inclusive sports, confidence, and connection.",
-    image: "/images/hero/social-camp-abilities.jpg",
-    imageAlt: "Participants at a Camp Abilities Bangladesh activity",
+    image: "/images/programs/source/camp-abilities-bangladesh/gallery_camp-abilities-3.jpg",
+    imageAlt: "A Camp Abilities Bangladesh participant running during an inclusive sports activity",
     imagePosition: "center 42%",
     imageLabel: "Camp Abilities Bangladesh",
   },
