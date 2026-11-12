@@ -1,26 +1,188 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Container } from "@/components/ui-brand/container";
 import { PageHeader } from "@/components/ui-brand/page-header";
 import { SectionHeading } from "@/components/ui-brand/section-heading";
-import { BrandButton } from "@/components/ui-brand/button";
-import { BrandBadge } from "@/components/ui-brand/badge";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui-brand/reveal-stagger";
-import { Scale, ArrowRight, Info } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Board Members",
+  title: "Board of Advisers",
   description:
-    "Heroes For All's board provides strategic oversight, financial stewardship, and accountability for the organization.",
+    "Meet the Board of Advisers and International Advisers supporting Heroes For All.",
 };
 
-const placeholderBoard = [
-  { role: "Chair" },
-  { role: "Vice Chair" },
-  { role: "Secretary" },
-  { role: "Treasurer" },
-  { role: "Director" },
-  { role: "Director" },
+type Adviser = {
+  name: string;
+  role: string;
+  image: string;
+};
+
+const boardAdvisers: Adviser[] = [
+  {
+    name: "'In our Memory' Rokia Afzal Rahman",
+    role: "Ex President, BFWE",
+    image: "/images/board-members/Rokia-Afzal-Rahman.jpg",
+  },
+  {
+    name: "Monira Rahman",
+    role: "Founder, Innovation for Wellbeing",
+    image: "/images/board-members/Monira-Rahman.jpg",
+  },
+  {
+    name: "Parveen Mahmud",
+    role: "Chairperson, Under Privileged Children's Educational Program (UCEP)",
+    image: "/images/board-members/Parveen-Mahmud.jpg",
+  },
+  {
+    name: "Shahla Kabir",
+    role: "Architect",
+    image: "/images/board-members/Shahla-Kabir.jpg",
+  },
+  {
+    name: "Md Nazrul Islam (SBP, SPP, NDU, AFWC, PSC, G)",
+    role: "Major General (Retired)",
+    image: "/images/board-members/Major-General-Nazrul.jpg",
+  },
+  {
+    name: "Omar Farook",
+    role: "Regional Policy Specialist, World Food Programme",
+    image: "/images/board-members/Omar-Farook.jpg",
+  },
+  {
+    name: "Salma Adil",
+    role: "CFO & ED, Top Of Mind (BD)",
+    image: "/images/board-members/Salma-Adil.jpg",
+  },
+  {
+    name: "Barrister Shukla Sarwat Siraj",
+    role: "Barrister",
+    image: "/images/board-members/Shukla-Sarwat-Siraj.jpg",
+  },
+  {
+    name: "Tina Jabeen",
+    role: "Senior Government Policy Advisor",
+    image: "/images/board-members/Tina-Jabeen.jpg",
+  },
+  {
+    name: "Muntasir Bhuiyan",
+    role: "COO, Market Access Providers Ltd",
+    image: "/images/board-members/Muntasir-Bhuiyan.jpg",
+  },
+  {
+    name: "M. Farhanul Enam",
+    role: "CEO & Founder, STEERWEB",
+    image: "/images/board-members/Farhanul-Enam.jpg",
+  },
+  {
+    name: "Mohammed Aminul Islam",
+    role: "Creative Director, Pink Creative Ltd",
+    image: "/images/board-members/Mohammed-Aminul-Islam.jpg",
+  },
+  {
+    name: "Tajrina Mannan",
+    role: "Founder, Merrill & Forbes",
+    image: "/images/board-members/Tajrina-Mannan.jpg",
+  },
+  {
+    name: "Ahmed Shabbir Naihan",
+    role: "Country Manager (First Aid Centre of Sweden)",
+    image: "/images/board-members/Ahmed-Shabbir-Naihan.jpg",
+  },
+  {
+    name: "Kazi Khurrum Ahmed",
+    role: "Chairman, EMX Limited",
+    image: "/images/board-members/Kazi-Khurrum-Ahmed.jpg",
+  },
+  {
+    name: "Azmeri Haque Badhon",
+    role: "Media Personality and Activist",
+    image: "/images/board-members/Azmeri-Haque-Badhon.jpg",
+  },
+  {
+    name: "Sainjida Awal",
+    role: "DMD, Prime Group of Industries",
+    image: "/images/board-members/Sainjida-Awal.jpg",
+  },
+  {
+    name: "Asma ul (Sylvia) Roxana",
+    role: "Board of Director in HFA",
+    image: "/images/board-members/Asma-ul-Sylvia-Roxana.jpg",
+  },
 ];
+
+const internationalAdvisers: Adviser[] = [
+  {
+    name: "Priya Bannarjee, PhD",
+    role: "Professor, Health Science, SUNY Brockport",
+    image: "/images/board-members/Dr.-Priya-Bannarjee.jpg",
+  },
+  {
+    name: "Coach Jim Johnson",
+    role: "Speaker, New York",
+    image: "/images/board-members/Coach-Jim-Johnson.jpg",
+  },
+  {
+    name: "Ivana Bozicevic",
+    role: "Founder at Big-hearted Leaders, Leadership Coach, Facilitator and Speaker",
+    image: "/images/board-members/Ivana-Bozicevic.jpg",
+  },
+  {
+    name: "Linda Caldwell",
+    role: "Ph.D Faculty Affiliate",
+    image: "/images/board-members/Linda-Caldwell.jpg",
+  },
+  {
+    name: "Subrina Farah",
+    role: "Statistician, Dana-Farber Cancer Institute/Harvard Medical School",
+    image: "/images/board-members/Subrina-Farah.jpg",
+  },
+  {
+    name: "Ehsan Haque",
+    role: "Associate Professor of Computer Science, University of Rochester",
+    image: "/images/board-members/Ehsan-Haque.jpg",
+  },
+  {
+    name: "Salehin Khan",
+    role: "United Nations Economic Commission for Europe",
+    image: "/images/board-members/Salehin-Khan.jpg",
+  },
+];
+
+function AdviserGrid({ advisers }: { advisers: Adviser[] }) {
+  return (
+    <StaggerGroup
+      className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      staggerChildren={0.06}
+      as="ul"
+    >
+      {advisers.map((adviser) => (
+        <StaggerItem
+          key={adviser.name}
+          as="li"
+          className="card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card"
+        >
+          <div className="relative aspect-[4/3] bg-secondary">
+            <Image
+              src={adviser.image}
+              alt={adviser.name}
+              fill
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw"
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="flex flex-1 flex-col gap-2 p-5">
+            <h3 className="font-heading text-lg font-semibold leading-snug text-primary">
+              {adviser.name}
+            </h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {adviser.role}
+            </p>
+          </div>
+        </StaggerItem>
+      ))}
+    </StaggerGroup>
+  );
+}
 
 export default function BoardMembersPage() {
   return (
@@ -28,8 +190,8 @@ export default function BoardMembersPage() {
       <PageHeader
         variant="primary"
         eyebrow="About Us"
-        title="Governance & board oversight."
-        description="The Heroes For All board provides strategic oversight, financial stewardship, and accountability for everything the organization does."
+        title="Board of Advisers."
+        description="Meet the Board of Advisers and International Advisers listed by Heroes For All."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about/our-story" },
@@ -37,137 +199,44 @@ export default function BoardMembersPage() {
         ]}
       />
 
-      {/* Intro */}
       <section className="section-spacing">
-        <Container size="wide">
-          <StaggerGroup className="grid gap-10 lg:grid-cols-[2fr_1fr] lg:gap-16 items-start" staggerChildren={0.1} as="div">
-            <StaggerItem as="div" direction="up">
-              <div className="flex flex-col gap-5">
-                <span className="eyebrow">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-                  Governance
-                </span>
-                <h2 className="heading-section text-primary">
-                  A board built for stewardship, not ceremony.
-                </h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  Heroes For All's board provides strategic oversight, financial stewardship,
-                  and accountability. The board reviews program direction, approves annual
-                  budgets, and ensures that every campaign and partnership advances the
-                  organization's mission of supporting youth to become conscious, purposeful,
-                  and engaged global citizens.
-                </p>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  Detailed board member bios will be added as they are verified from the
-                  original site. The structure below reflects the standing roles on the
-                  Heroes For All board.
-                </p>
-              </div>
-            </StaggerItem>
-
-            <StaggerItem as="div" direction="up">
-              <aside className="rounded-2xl border border-border bg-card p-6 flex flex-col gap-4">
-                <div className="flex items-center gap-2 text-accent">
-                  <Scale className="h-5 w-5" aria-hidden />
-                  <span className="label-small">Board responsibilities</span>
-                </div>
-                <ul className="flex flex-col gap-2.5 text-sm text-muted-foreground">
-                  <li>Strategic direction and annual planning.</li>
-                  <li>Financial stewardship and budget approval.</li>
-                  <li>Programmatic oversight and impact review.</li>
-                  <li>Compliance, risk, and accountability.</li>
-                </ul>
-              </aside>
-            </StaggerItem>
-          </StaggerGroup>
-        </Container>
-      </section>
-
-      {/* Placeholder grid */}
-      <section className="section-spacing bg-secondary/40">
         <Container size="wide">
           <Reveal>
-            <SectionHeading
-              eyebrow="Board roster"
-              title="The standing board."
-              description="Board seats and roles. Bios are pending verification from the original site."
-            />
-          </Reveal>
-          <StaggerGroup
-            className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-            staggerChildren={0.1}
-            as="ul"
-          >
-            {placeholderBoard.map((m, i) => (
-              <StaggerItem
-                key={`${m.role}-${i}`}
-                as="li"
-                className="card-hover flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 h-full"
-              >
-                <div className="flex aspect-square w-full items-center justify-center rounded-xl bg-gradient-to-br from-[#173F35] via-[#102F28] to-[#173F35]">
-                  <span className="font-heading text-3xl font-bold text-accent">
-                    HFA
-                  </span>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <BrandBadge variant="sage">{m.role}</BrandBadge>
-                  <h3 className="font-heading text-lg font-semibold text-primary">
-                    Board Member
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Bio pending verification from the original site.
-                  </p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-
-          {/* Pending note */}
-          <div className="mt-10 flex items-start gap-3 rounded-2xl border border-dashed border-border bg-background p-5">
-            <Info className="h-5 w-5 text-accent shrink-0 mt-0.5" aria-hidden />
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Board member photographs and detailed biographies will be published on this
-              page once they have been verified against the original site. For governance
-              inquiries in the meantime, please reach out to{" "}
-              <a
-                href="mailto:info@heroesforall.org"
-                className="text-primary font-medium link-underline"
-              >
-                info@heroesforall.org
-              </a>
-              .
+            <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              The profiles below include the names and professional roles published
+              on the organization&apos;s Board Members page. The source page does not
+              include longer biographies.
             </p>
-          </div>
-        </Container>
-      </section>
+            <a
+              href="https://heroesforall.org/board-members/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex text-sm font-medium text-primary underline underline-offset-4 hover:text-accent"
+            >
+              View the source page
+            </a>
+          </Reveal>
 
-      {/* Final CTA */}
-      <section className="section-spacing">
-        <Container size="wide">
-          <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div className="flex flex-col gap-3 max-w-xl">
-              <h2 className="heading-section text-primary-foreground">
-                Read the reports. Meet the team.
-              </h2>
-              <p className="text-base text-primary-foreground/85 leading-relaxed">
-                Annual reports summarize the organization's programs, partnerships, and
-                finances. Our team runs the work day-to-day.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <BrandButton href="/about/annual-reports" variant="accent" size="lg">
-                Annual Reports
-              </BrandButton>
-              <BrandButton
-                href="/about/our-team"
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-primary-foreground hover:bg-white/10"
-              >
-                Our Team
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </BrandButton>
-            </div>
+          <div className="mt-12">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Advisers"
+                title="Board of Advisers."
+                description="Advisers and professionals listed by Heroes For All."
+              />
+            </Reveal>
+            <AdviserGrid advisers={boardAdvisers} />
+          </div>
+
+          <div className="mt-16">
+            <Reveal>
+              <SectionHeading
+                eyebrow="International network"
+                title="International Advisers."
+                description="International advisers listed by Heroes For All."
+              />
+            </Reveal>
+            <AdviserGrid advisers={internationalAdvisers} />
           </div>
         </Container>
       </section>
