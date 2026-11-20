@@ -58,7 +58,7 @@ export default function OurTeamPage() {
                       Founder &amp; President
                     </span>
                   </div>
-                  <div className="flex flex-col justify-center gap-5 p-6 sm:p-10 lg:p-12">
+                  <div className="flex flex-col items-center justify-center gap-5 p-6 text-center sm:p-10 lg:p-12">
                     <p className="eyebrow">Leadership</p>
                     <div className="space-y-2">
                       <h2 className="font-heading text-3xl font-bold tracking-tight text-primary sm:text-4xl">
@@ -71,11 +71,11 @@ export default function OurTeamPage() {
                         {founder.bio}
                       </p>
                     )}
-                    <div className="flex flex-col items-start gap-4">
+                    <div className="flex w-full flex-col items-center gap-4">
                       {founder.email && (
                         <a
                           href={`mailto:${founder.email}`}
-                          className="inline-flex min-w-0 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                          className="inline-flex min-w-0 items-center justify-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
                         >
                           <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
                           <span className="break-all">{founder.email}</span>
@@ -124,18 +124,18 @@ export default function OurTeamPage() {
                       </div>
                     )}
                   </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <div className="min-h-[72px]">
+                  <div className="flex flex-1 flex-col items-center p-5 text-center">
+                    <div className="min-h-[72px] w-full">
                       <h3 className="font-heading text-lg font-semibold leading-snug text-primary">
                         {member.name}
                       </h3>
                       <p className="mt-1 text-sm leading-relaxed text-accent">{member.role}</p>
                     </div>
-                    <div className="mt-4 flex flex-1 flex-col justify-end gap-3 border-t border-border pt-3">
+                    <div className="mt-4 flex w-full flex-1 flex-col items-center justify-end gap-3 border-t border-border pt-3">
                       {member.email ? (
                         <a
                           href={`mailto:${member.email}`}
-                          className="inline-flex min-w-0 items-start gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                          className="inline-flex min-w-0 items-center justify-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
                         >
                           <Mail className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                           <span className="break-all">{member.email}</span>
@@ -166,7 +166,7 @@ function MemberSocialIcons({ memberName }: { memberName: string }) {
   ];
 
   return (
-    <div role="group" aria-label={`${memberName} social media`} className="flex items-center gap-2">
+    <div role="group" aria-label={`${memberName} social media`} className="flex w-full items-center justify-center gap-2">
       {icons.map(({ label, Icon }) => (
         <span
           key={label}
