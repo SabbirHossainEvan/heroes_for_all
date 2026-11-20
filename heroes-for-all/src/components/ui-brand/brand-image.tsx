@@ -106,11 +106,13 @@ export function BrandAvatar({
   alt,
   className,
   priority = false,
+  fit = "cover",
 }: {
   src: string;
   alt: string;
   className?: string;
   priority?: boolean;
+  fit?: "cover" | "contain";
 }) {
   return (
     <div className={cn("relative overflow-hidden bg-secondary", className)}>
@@ -120,7 +122,7 @@ export function BrandAvatar({
         fill
         priority={priority}
         sizes="(max-width: 768px) 120px, 200px"
-        className="object-cover object-top"
+        className={fit === "contain" ? "object-contain" : "object-cover object-top"}
       />
     </div>
   );
