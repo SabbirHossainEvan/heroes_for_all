@@ -15,6 +15,15 @@ import {
 
 const slides = [
   {
+    eyebrow: "Community — Paara Utshob",
+    title: <>Paara Utshob is back.</>,
+    description: "Stay tuned for details.",
+    image: "/Untitled-1.png",
+    imageAlt: "Paara Utshob is back. Stay tuned for details.",
+    imagePosition: "center",
+    imageLabel: "Paara Utshob is back",
+  },
+  {
     eyebrow: "Warriors of Change",
     title: (
       <>
@@ -60,16 +69,6 @@ const slides = [
     imageLabel: "Paara Utshob",
   },
 ];
-
-slides.push({
-  eyebrow: "Community — Paara Utshob",
-  title: <>Paara Utshob is back.</>,
-  description: "Stay tuned for details.",
-  image: "/Untitled-1.png",
-  imageAlt: "Paara Utshob is back. Stay tuned for details.",
-  imagePosition: "center",
-  imageLabel: "Paara Utshob is back",
-});
 
 const AUTOPLAY_DELAY = 7000;
 
