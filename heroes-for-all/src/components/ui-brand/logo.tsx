@@ -15,9 +15,7 @@ export function Logo({ variant = "dark", className }: LogoProps) {
       aria-label="Heroes For All, home"
       className={cn(
         "inline-flex shrink-0 items-center",
-        variant === "light"
-          ? "rounded-md bg-white p-1"
-          : "bg-transparent p-0",
+        "bg-transparent p-0",
         className,
       )}
     >

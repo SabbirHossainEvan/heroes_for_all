@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone, MapPin, Heart, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui-brand/container";
-import { Logo } from "@/components/ui-brand/logo";
 import { footerNav, legalNav, contactInfo, socialLinks } from "@/data/navigation";
 
 export function SiteFooter() {
@@ -10,8 +9,15 @@ export function SiteFooter() {
       <Container size="wide" className="py-14 md:py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
           {/* Brand block */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
-            <Logo variant="light" className="w-full justify-center" />
+          <div className="lg:col-span-2 flex flex-col items-start gap-5">
+            <div className="flex flex-col items-start gap-1 border-l-4 border-accent pl-4">
+              <p className="font-heading text-3xl font-extrabold leading-none tracking-tight text-primary-foreground sm:text-4xl">
+                Heroes for All
+              </p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent sm:text-base">
+                Warriors of Change
+              </p>
+            </div>
             <p className="text-sm leading-relaxed text-primary-foreground/80 max-w-sm">
               A youth-focused nonprofit building conscious, purposeful, and
               engaged global citizens through education, community engagement,

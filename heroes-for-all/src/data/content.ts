@@ -427,6 +427,12 @@ export type TeamMember = {
   category: "leadership" | "executive";
   bio?: string;
   image?: string;
+  socialLinks?: {
+    linkedin?: string;
+    twitter?: string;
+    facebook?: string;
+    instagram?: string;
+  };
 };
 
 export const teamMembers: TeamMember[] = [
