@@ -737,15 +737,7 @@ export const upcomingEvents = [
     location: "Dhaka, Bangladesh",
     description:
       "The next edition of our developmental sports camp for visually impaired children, in partnership with Camp Abilities USA.",
-    status: "open",
-  },
-  {
-    title: "Knowledge Sessions — Winter Cohort",
-    date: "2025-11-10",
-    location: "North South University, Dhaka",
-    description:
-      "Our quarterly knowledge session series returns for the winter cohort, with workshops on civic engagement and informed life choices.",
-    status: "open",
+    status: "Closed for registration",
   },
   {
     title: "Paara Utshob 2026",

@@ -43,7 +43,7 @@ export default function EventsPage() {
             <SectionHeading
               eyebrow="Upcoming"
               title="What's next."
-              description="Register interest or join us at one of the events below. Where registration is open, the event is accepting participants."
+              description="Explore upcoming events and activities from the Heroes For All calendar."
             />
           </Reveal>
           <StaggerGroup
@@ -89,13 +89,15 @@ export default function EventsPage() {
                     {e.location}
                   </span>
                 </div>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent transition-colors"
-                >
-                  Register interest
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
+                {e.title !== "Camp Abilities Bangladesh 2025" && (
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent transition-colors"
+                  >
+                    Register interest
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </Link>
+                )}
               </StaggerItem>
             ))}
           </StaggerGroup>
