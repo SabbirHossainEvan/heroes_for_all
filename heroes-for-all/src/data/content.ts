@@ -117,7 +117,10 @@ export type Program = {
   activities: string[];
   icon: LucideIcon;
   image?: string;
+  imageAlt?: string;
   gallery?: string[];
+  galleryAlt?: string[];
+  facebookUrl?: string;
   featured?: boolean;
 };
 
@@ -142,6 +145,32 @@ export const programs: Program[] = [
       "Guest talks from practitioners across disciplines.",
     ],
     icon: GraduationCap,
+    featured: false,
+  },
+  {
+    slug: "paara-kunjo",
+    title: "Paara Kunjo",
+    image: programMedia["paara-kunjo"].image,
+    imageAlt: "Architectural rendering of the Heroes For All community hub.",
+    gallery: programMedia["paara-kunjo"].gallery,
+    galleryAlt: ["Paara Kunjo Facebook page profile image with Bengali lettering."],
+    facebookUrl: "https://www.facebook.com/paarakunjo",
+    category: "Community",
+    excerpt:
+      "A community hub in Green Road, at the heart of Dhaka, fostering belonging and stronger community bonds.",
+    description:
+      "Paara Kunjo is a community hub in Green Road, Dhaka, designed as a welcoming space where neighbors can connect, share, and support one another. Heroes For All describes it as a place to build belonging and stronger community bonds. Public updates show the hub hosting creative wellbeing activities, including art sessions and conversations about managing stress and building personal strengths.",
+    objectives: [
+      "Foster belonging and stronger connections among neighbors.",
+      "Provide a welcoming place for people to meet, share, and support one another.",
+      "Encourage community wellbeing through creative and practical activities.",
+    ],
+    activities: [
+      "Art for wellbeing sessions and opportunities for creative expression.",
+      "Community conversations and workshops on stress management and personal strengths.",
+      "Shared resources and neighborhood gatherings at the hub.",
+    ],
+    icon: Users,
     featured: true,
   },
   {

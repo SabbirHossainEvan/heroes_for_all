@@ -35,6 +35,12 @@
                                            "/images/programs/source/school-project/community-hub.jpg"
                                        ]
                        },
+    "paara-kunjo":  {
+                         "image":  "/images/campaigns/community-hub.jpg",
+                         "gallery":  [
+                                         "/images/programs/paara-kunjo/paara-kunjo-facebook.jpg"
+                                     ]
+                     },
     "paara-utshob":  {
                          "image":  "/images/programs/source/paara-utshob/pu-website-banner.jpg",
                          "gallery":  [

@@ -9,7 +9,7 @@ import { BrandBadge } from "@/components/ui-brand/badge";
 import { BrandImage } from "@/components/ui-brand/brand-image";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui-brand/reveal-stagger";
 import { programs } from "@/data/content";
-import { ArrowRight, Check, Target, ArrowLeft } from "lucide-react";
+import { ArrowRight, Check, Target, ArrowLeft, ExternalLink } from "lucide-react";
 
 export function generateStaticParams() {
   return programs.map((p) => ({ slug: p.slug }));
@@ -62,7 +62,7 @@ export default async function ProgramDetailPage({
             <Reveal direction="up">
               <BrandImage
                 src={program.image}
-                alt={program.title}
+                alt={program.imageAlt ?? program.title}
                 aspect="wide"
                 className="rounded-3xl"
                 priority
@@ -114,6 +114,12 @@ export default async function ProgramDetailPage({
                   <BrandButton href="/get-involved/volunteer" variant="outline" size="md" className="w-full">
                     Volunteer
                   </BrandButton>
+                  {program.facebookUrl && (
+                    <BrandButton href={program.facebookUrl} external variant="subtle" size="md" className="w-full">
+                      Visit Facebook page
+                      <ExternalLink className="h-4 w-4" aria-hidden />
+                    </BrandButton>
+                  )}
                 </div>
               </aside>
             </Reveal>
@@ -129,7 +135,7 @@ export default async function ProgramDetailPage({
               <SectionHeading
                 eyebrow="In pictures"
                 title="From the field."
-                description="A photo gallery from this program's recent activities."
+                description="Photos and other imagery connected to this program."
               />
             </Reveal>
             <StaggerGroup
@@ -141,7 +147,7 @@ export default async function ProgramDetailPage({
                 <StaggerItem key={i} as="div">
                   <BrandImage
                     src={src}
-                    alt={`${program.title} gallery image ${i + 1}`}
+                    alt={program.galleryAlt?.[i] ?? `${program.title} gallery image ${i + 1}`}
                     aspect="square"
                     className="rounded-2xl"
                   />

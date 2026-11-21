@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Users } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui-brand/container";
 import { SectionHeading } from "@/components/ui-brand/section-heading";
 import { BrandBadge } from "@/components/ui-brand/badge";
@@ -15,32 +15,7 @@ const categoryVariants = {
 } as const;
 
 export function ProgramsSection() {
-  const featured = [
-    {
-      slug: "paara-kunjo",
-      title: "Paara Kunjo",
-      category: "Community" as const,
-      excerpt:
-        "A welcoming community hub where neighbors can connect, take part in creative wellbeing activities, and support one another.",
-      icon: Users,
-      href: "https://www.facebook.com/paarakunjo",
-      external: true,
-      action: "Visit Paara Kunjo",
-    },
-    ...programs
-      .filter((program) => program.featured && program.slug !== "knowledge-sessions")
-      .slice(0, 3)
-      .map((program) => ({
-        slug: program.slug,
-        title: program.title,
-        category: program.category,
-        excerpt: program.excerpt,
-        icon: program.icon,
-        href: `/programs/${program.slug}`,
-        external: false,
-        action: "View program",
-      })),
-  ];
+  const featured = programs.filter((program) => program.featured).slice(0, 4);
 
   return (
     <section className="section-spacing bg-secondary/40">
@@ -49,7 +24,7 @@ export function ProgramsSection() {
           <SectionHeading
             eyebrow="What We Do"
             title="Programs that turn intention into impact."
-            description="Eleven initiatives across education, community, culture, relief, and the environment — each one anchored in the same mission."
+            description={`${programs.length} initiatives across education, community, culture, relief, and the environment — each one anchored in the same mission.`}
             align="center"
           />
         </Reveal>
@@ -59,43 +34,33 @@ export function ProgramsSection() {
           staggerChildren={0.12}
           as="div"
         >
-          {featured.map((p) => {
-            const Icon = p.icon;
-            const content = (
-              <>
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                  <BrandBadge variant={categoryVariants[p.category]}>
-                    {p.category}
-                  </BrandBadge>
-                </div>
-                <div className="flex flex-col gap-3 flex-1">
-                  <h3 className="heading-card text-primary">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                    {p.excerpt}
-                  </p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
-                  {p.action}
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-                </span>
-              </>
-            );
-            const className = "card-hover group relative flex flex-col gap-5 rounded-3xl border border-border bg-card p-6 md:p-7 h-full";
-
+          {featured.map((program) => {
+            const Icon = program.icon;
             return (
-              <StaggerItem key={p.slug} as="div">
-                {p.external ? (
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className={className}>
-                    {content}
-                  </a>
-                ) : (
-                  <Link href={p.href} className={className}>
-                    {content}
-                  </Link>
-                )}
+              <StaggerItem key={program.slug} as="div">
+                <Link
+                  href={`/programs/${program.slug}`}
+                  className="card-hover group relative flex h-full flex-col gap-5 rounded-3xl border border-border bg-card p-6 md:p-7"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <BrandBadge variant={categoryVariants[program.category]}>
+                      {program.category}
+                    </BrandBadge>
+                  </div>
+                  <div className="flex flex-1 flex-col gap-3">
+                    <h3 className="heading-card text-primary">{program.title}</h3>
+                    <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+                      {program.excerpt}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+                    View program
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+                  </span>
+                </Link>
               </StaggerItem>
             );
           })}
@@ -105,9 +70,9 @@ export function ProgramsSection() {
           <div className="mt-10 flex justify-center">
             <Link
               href="/programs"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-accent"
             >
-              Browse all 11 programs
+              Browse all {programs.length} programs
               <ArrowUpRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>

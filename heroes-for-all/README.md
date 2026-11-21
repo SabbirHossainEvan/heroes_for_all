@@ -142,7 +142,7 @@ Every discoverable page from the original WordPress site has been accounted for.
 | `/about-us/board-members` | `/about/board-members` | Rebuilt with placeholder cards — bios pending verification |
 | `/about-us/our-partners` | `/about/our-partners` | Rebuilt — all 15 partners grouped by category |
 | `/about-us/annual-reports` | `/about/annual-reports` | Rebuilt — 3 report cards, links pending verification |
-| `/programs/` (404 on original) | `/programs` | Rebuilt — full listing of all 11 programs |
+| `/programs/` (404 on original) | `/programs` | Rebuilt — full listing of all 12 programs |
 | `/programs/camp-abilities-bangladesh` | `/programs/camp-abilities-bangladesh` | Rebuilt — full detail page |
 | `/programs/knowledge-sessions` | `/programs/knowledge-sessions` | Rebuilt |
 | `/programs/school-project` | `/programs/school-project` | Rebuilt |
@@ -170,7 +170,7 @@ Every discoverable page from the original WordPress site has been accounted for.
 | (campaign pages) | `/donate/[slug]` | Rebuilt — 3 campaign-specific donation pages |
 | (404) | `/not-found` | Custom 404 with brand logo and nav links |
 
-**Total: 33 pages** (10 static About/Programs + 11 program detail + 6 news detail + 4 Get Involved + Donate landing + 3 campaign + Contact + FAQ + Events + Privacy + Terms + Not Found + Home).
+**Total: 34 pages** (10 static About/Programs + 12 program detail + 6 news detail + 4 Get Involved + Donate landing + 3 campaign + Contact + FAQ + Events + Privacy + Terms + Not Found + Home).
 
 ## Forms
 
@@ -190,7 +190,7 @@ See `KNOWN-LIMITATIONS.md` for the full list of pending integrations.
 - **Metadata API**: every page exports `metadata` (static) or `generateMetadata` (dynamic).
 - **Title template**: `"%s | Heroes For All"`.
 - **Open Graph + Twitter Card**: configured in `layout.tsx` with `/og-image.svg`.
-- **Sitemap**: `src/app/sitemap.ts` generates `/sitemap.xml` covering all 33 routes.
+- **Sitemap**: `src/app/sitemap.ts` generates `/sitemap.xml` covering all 34 routes.
 - **Robots**: `src/app/robots.ts` allows all crawling and points to the sitemap.
 - **Canonical URLs**: configured via `metadataBase` in `layout.tsx`.
 - **Structured data**: heading hierarchy is clean (single `<h1>` per page, logical `<h2>/<h3>`).
@@ -215,7 +215,7 @@ Verified with agent-browser:
 - FAQ accordion: clicking a question expands it (`aria-expanded` toggles, region appears).
 - Contact form: full validation, submit shows success message.
 - 404 page renders on invalid routes.
-- All 33 routes return HTTP 200 (or 404 for invalid slugs).
+- The original 33 routes were browser-tested before the Paara Kunjo route was added; the new route has not yet been browser-tested.
 
 ## Known limitations
 
