@@ -31,7 +31,7 @@ export function SectionHeading({
     >
       <h2
         className={cn(
-          "heading-section text-primary",
+          "heading-section text-accent",
           size === "large" && "heading-page",
           align === "center" && "mx-auto max-w-3xl",
         )}
