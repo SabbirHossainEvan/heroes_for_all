@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Users } from "lucide-react";
 import { Container } from "@/components/ui-brand/container";
 import { SectionHeading } from "@/components/ui-brand/section-heading";
 import { BrandBadge } from "@/components/ui-brand/badge";
@@ -15,7 +15,32 @@ const categoryVariants = {
 } as const;
 
 export function ProgramsSection() {
-  const featured = programs.filter((p) => p.featured).slice(0, 4);
+  const featured = [
+    {
+      slug: "paara-kunjo",
+      title: "Paara Kunjo",
+      category: "Community" as const,
+      excerpt:
+        "A welcoming community hub where neighbors can connect, take part in creative wellbeing activities, and support one another.",
+      icon: Users,
+      href: "https://www.facebook.com/paarakunjo",
+      external: true,
+      action: "Visit Paara Kunjo",
+    },
+    ...programs
+      .filter((program) => program.featured && program.slug !== "knowledge-sessions")
+      .slice(0, 3)
+      .map((program) => ({
+        slug: program.slug,
+        title: program.title,
+        category: program.category,
+        excerpt: program.excerpt,
+        icon: program.icon,
+        href: `/programs/${program.slug}`,
+        external: false,
+        action: "View program",
+      })),
+  ];
 
   return (
     <section className="section-spacing bg-secondary/40">
@@ -36,31 +61,41 @@ export function ProgramsSection() {
         >
           {featured.map((p) => {
             const Icon = p.icon;
+            const content = (
+              <>
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <BrandBadge variant={categoryVariants[p.category]}>
+                    {p.category}
+                  </BrandBadge>
+                </div>
+                <div className="flex flex-col gap-3 flex-1">
+                  <h3 className="heading-card text-primary">{p.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                    {p.excerpt}
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
+                  {p.action}
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+                </span>
+              </>
+            );
+            const className = "card-hover group relative flex flex-col gap-5 rounded-3xl border border-border bg-card p-6 md:p-7 h-full";
+
             return (
               <StaggerItem key={p.slug} as="div">
-                <Link
-                  href={`/programs/${p.slug}`}
-                  className="card-hover group relative flex flex-col gap-5 rounded-3xl border border-border bg-card p-6 md:p-7 h-full"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <BrandBadge variant={categoryVariants[p.category]}>
-                      {p.category}
-                    </BrandBadge>
-                  </div>
-                  <div className="flex flex-col gap-3 flex-1">
-                    <h3 className="heading-card text-primary">{p.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                      {p.excerpt}
-                    </p>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
-                    View program
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-                  </span>
-                </Link>
+                {p.external ? (
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className={className}>
+                    {content}
+                  </a>
+                ) : (
+                  <Link href={p.href} className={className}>
+                    {content}
+                  </Link>
+                )}
               </StaggerItem>
             );
           })}
