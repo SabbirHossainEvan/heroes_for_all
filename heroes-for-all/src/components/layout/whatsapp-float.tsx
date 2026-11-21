@@ -9,7 +9,7 @@ export function WhatsAppFloat() {
     >
       <svg
         viewBox="0 0 32 32"
-        className="h-10 w-10"
+        className="h-12 w-12"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
