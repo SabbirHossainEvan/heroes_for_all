@@ -20,6 +20,7 @@ export function SectionHeading({
   className,
   container = false,
 }: SectionHeadingProps) {
+  const heading = eyebrow ?? title;
   const content = (
     <div
       className={cn(
@@ -28,21 +29,25 @@ export function SectionHeading({
         className,
       )}
     >
-      {eyebrow && (
-        <span className="eyebrow">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-          {eyebrow}
-        </span>
-      )}
       <h2
         className={cn(
-          "heading-section text-primary",
+          "heading-section text-accent",
           size === "large" && "heading-page",
           align === "center" && "mx-auto max-w-3xl",
         )}
       >
-        {title}
+        {heading}
       </h2>
+      {eyebrow && (
+        <p
+          className={cn(
+            "text-lg font-medium leading-relaxed text-primary/80 md:text-xl",
+            align === "center" && "mx-auto max-w-3xl",
+          )}
+        >
+          {title}
+        </p>
+      )}
       {description && (
         <p
           className={cn(

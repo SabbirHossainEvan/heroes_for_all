@@ -30,7 +30,7 @@ export default function ProgramsPage() {
         variant="primary"
         eyebrow="What We Do"
         title="Programs that turn intention into impact."
-        description="Eleven programs across education, community, culture, relief, and environment. Each one is grounded in the same mission: helping youth become conscious, purposeful, and engaged global citizens."
+        description={`${programs.length} programs across education, community, culture, relief, and environment. Each one is grounded in the same mission: helping youth become conscious, purposeful, and engaged global citizens.`}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Programs" },
@@ -102,7 +102,7 @@ export default function ProgramsPage() {
                       {p.image ? (
                         <BrandImage
                           src={p.image}
-                          alt={p.title}
+                          alt={p.imageAlt ?? p.title}
                           aspect="wide"
                         />
                       ) : (

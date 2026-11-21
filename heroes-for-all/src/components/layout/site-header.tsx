@@ -107,11 +107,6 @@ export function SiteHeader() {
                           <div className="text-sm font-semibold">
                             {leaf.label}
                           </div>
-                          {leaf.description && (
-                            <div className="mt-0.5 text-xs text-muted-foreground">
-                              {leaf.description}
-                            </div>
-                          )}
                         </Link>
                       ))}
                     </div>
