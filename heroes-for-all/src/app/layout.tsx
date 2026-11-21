@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -108,6 +109,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <WhatsAppFloat />
         <Toaster />
       </body>
     </html>
