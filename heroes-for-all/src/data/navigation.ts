@@ -37,10 +37,11 @@ export const mainNav: NavGroup[] = [
     description: "Our initiatives across education, community, and culture",
     children: [
       { label: "All Programs", href: "/programs", description: "Browse every initiative" },
+      { label: "Community Engagement – Paara Utshob", href: "/programs/paara-utshob", description: "The neighborhood festival and community gathering" },
+      { label: "Paara Kunjo", href: "/programs/paara-kunjo", description: "Community hub in Green Road, Dhaka" },
       { label: "Knowledge Sessions", href: "/programs/knowledge-sessions", description: "Workshops for youth development" },
       { label: "Camp Abilities Bangladesh", href: "/programs/camp-abilities-bangladesh", description: "Sports camp for visually impaired children" },
       { label: "School Project", href: "/programs/school-project", description: "Building schools to unlock the world" },
-      { label: "Community Engagement – Paara Utshob", href: "/programs/paara-utshob", description: "The neighborhood festival and community gathering" },
       { label: "Photo Palooza", href: "/programs/photo-palooza", description: "Youth photography celebration" },
       { label: "Cross-Cultural Programs", href: "/programs/cross-cultural-programs", description: "Global exchange of ideas" },
       { label: "COVID-19 Relief", href: "/programs/covid-19-relief", description: "Emergency community support" },
