@@ -34,6 +34,16 @@ export function SiteFooter() {
                   {contactInfo.phone}
                 </a>
               </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 text-accent shrink-0" aria-hidden />
+                <span>{contactInfo.bangladeshAddress}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-accent shrink-0" aria-hidden />
+                <a href={`tel:${contactInfo.bangladeshPhone.replace(/[^\d+]/g, "")}`} className="hover:text-white transition-colors">
+                  {contactInfo.bangladeshPhone}
+                </a>
+              </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-accent shrink-0" aria-hidden />
                 <a href={`mailto:${contactInfo.email}`} className="hover:text-white transition-colors">

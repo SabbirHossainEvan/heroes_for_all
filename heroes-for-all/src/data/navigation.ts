@@ -147,6 +147,8 @@ export const legalNav: NavLeaf[] = [
 export const contactInfo = {
   address: "160 Evergreen Road, Brockport, NY",
   phone: "+1 (585) 474 4729",
+  bangladeshAddress: "40/2 Al Amin Rd, Green Road, Dhaka, Bangladesh",
+  bangladeshPhone: "01320-760644",
   email: "info@heroesforall.org",
   copyright: "© 2026 Heroes For All — Warriors of Change. All Rights Reserved.",
 };
